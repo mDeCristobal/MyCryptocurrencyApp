@@ -1,0 +1,13 @@
+<resources>
+    <!-- Common -->
+    <string name="app_name">MyCryptocurrencyApp</string>
+    <string name="cant_access_data_error">Sorry, an expected error occurred</string>
+    <string name="no_internet_error">There´s a problem with your connection, please check</string>
+    <string name="accept_dialog_btn">I understand</string>
+
+    <!-- Coins -->
+    <string name="coin_list_name">%s). %s</string>
+    <string name="coin_is_active">active</string>
+    <string name="coin_is_not_active">inactive</string>
+
+</resources>
