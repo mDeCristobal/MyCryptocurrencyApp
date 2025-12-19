@@ -1,2 +1,10 @@
 # MyCryptocurrencyApp
-Simple Demo App, Clean Architecture, Retrofit, Hilt, Flow, UnitTesting, Navigation
+Simple Demo App featuring:
+
+- 100% Kotlin
+- Clean Architecture
+- Jetpack compose
+- Retrofit
+- Hilt
+- Coroutines
+- UnitTesting
