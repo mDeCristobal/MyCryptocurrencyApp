@@ -18,28 +18,26 @@ class CoinRepositoryImpl @Inject constructor(
     private val coinsApi: CoinsApi
 ) : CoinRepository {
 
-    override suspend fun getCoins(): Flow<Resource<List<Coin>>> = flow {
-        try {
-            emit(Resource.Loading())
+    override suspend fun getCoins(): Resource<List<Coin>>  {
+        return try {
             val coins = coinsApi.getCoins().map { it.toCoin() }
-            emit(Resource.Success(coins))
+            Resource.Success(coins)
         } catch (e: HttpException) {
-            emit(Resource.Error(e.localizedMessage ?: "An unexpected error ocurred"))
+            Resource.Error(e.localizedMessage ?: "An unexpected error ocurred")
         } catch (e: IOException) {
-            emit(Resource.Error(CustomErrorsEnum.NO_INTERNET.name))
+            Resource.Error(CustomErrorsEnum.NO_INTERNET.name)
         }
     }
 
 
-    override suspend fun getCoin(id: String): Flow<Resource<CoinDetail>> = flow {
-        try {
-            emit(Resource.Loading())
+    override suspend fun getCoin(id: String): Resource<CoinDetail>  {
+       return try {
             val coin = coinsApi.getCoin(id).toCoinDetail()
-            emit(Resource.Success(coin))
+            Resource.Success(coin)
         } catch (e: HttpException) {
-            emit(Resource.Error(e.localizedMessage ?: "An unexpected error ocurred"))
+            Resource.Error(e.localizedMessage ?: "An unexpected error ocurred")
         } catch (e: IOException) {
-            emit(Resource.Error(CustomErrorsEnum.NO_INTERNET.name))
+            Resource.Error(CustomErrorsEnum.NO_INTERNET.name)
         }
     }
 }

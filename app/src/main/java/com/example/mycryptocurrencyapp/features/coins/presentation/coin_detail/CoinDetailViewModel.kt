@@ -31,38 +31,30 @@ class CoinDetailViewModel @Inject constructor(
         getCoinDetail(coinId)
     }
 
-//    fun onEvent(event: CoinDetailUserEvent) {
-//        when (event) {
-//            is CoinDetailUserEvent.OnRetry -> getCoinDetail(coinId)
-//        }
-//    }
-
     private fun getCoinDetail(id: String) {
         viewModelScope.launch {
-            getCoinDetailUseCase(id).onEach { result ->
-                when (result) {
-                    is Resource.Success -> {
-                        _state.update {
-                            it.copy(
-                                coin = result.data,
-                                isLoading = false,
-                                error = ""
-                            )
-                        }
+            when (val result = getCoinDetailUseCase(id)) {
+                is Resource.Success -> {
+                    _state.update {
+                        it.copy(
+                            coin = result.data,
+                            isLoading = false,
+                            error = ""
+                        )
                     }
+                }
 
-                    is Resource.Error -> {
-                        _state.update {
-                            it.copy(
-                                error = result.message ?: "An unexpected error occurred",
-                                isLoading = false
-                            )
-                        }
+                is Resource.Error -> {
+                    _state.update {
+                        it.copy(
+                            error = result.message ?: "An unexpected error occurred",
+                            isLoading = false
+                        )
                     }
+                }
 
-                    is Resource.Loading -> {
-                        _state.update { it.copy(isLoading = true) }
-                    }
+                is Resource.Loading -> {
+                    _state.update { it.copy(isLoading = true) }
                 }
             }
         }

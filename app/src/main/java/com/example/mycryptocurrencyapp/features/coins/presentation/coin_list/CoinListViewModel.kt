@@ -39,9 +39,7 @@ class CoinListViewModel @Inject constructor(
 
     private fun getCoins() {
         viewModelScope.launch {
-            getCoinsUseCase().onEach { result ->
-                Log.d(TAG, "getCoins result: $result")
-                when (result) {
+           when (val result =  getCoinsUseCase()) {
                     is Resource.Success -> {
                         _state.update {
                             it.copy(
@@ -65,7 +63,6 @@ class CoinListViewModel @Inject constructor(
                         _state.update { it.copy(isLoading = true) }
                     }
                 }
-            }
         }
     }
 
