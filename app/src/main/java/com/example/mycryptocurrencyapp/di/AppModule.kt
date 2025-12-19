@@ -1,6 +1,6 @@
 package com.example.mycryptocurrencyapp.di
 
-import androidx.viewbinding.BuildConfig
+import com.example.mycryptocurrencyapp.BuildConfig
 import com.example.mycryptocurrencyapp.common.Constants.BASE_URL
 import com.example.mycryptocurrencyapp.common.ui.loadingDialog.LoadingDialogFragment
 import com.example.mycryptocurrencyapp.features.coins.data.remote.CoinsApi
