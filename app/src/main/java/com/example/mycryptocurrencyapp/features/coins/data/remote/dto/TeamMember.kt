@@ -1,6 +1,5 @@
 package com.example.mycryptocurrencyapp.features.coins.data.remote.dto
 
-
 import com.google.gson.annotations.SerializedName
 
 data class TeamMember(

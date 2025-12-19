@@ -153,4 +153,5 @@ dependencies {
 
     implementation ("androidx.navigation:navigation-fragment-ktx:2.3.5")
     implementation ("androidx.navigation:navigation-ui-ktx:2.3.5")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.0")
 }
